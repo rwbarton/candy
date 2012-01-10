@@ -468,7 +468,6 @@ Candy.Util = (function(self, $){
 			if(text) {
 				text = this.escape(text);
 				text = this.linkify(text);
-                                text = this.emotify(text);
 			}
 			return text;
 		}
