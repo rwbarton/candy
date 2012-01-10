@@ -88,10 +88,6 @@ Candy.View = (function(self, $) {
 			});
 			$('#chat-autoscroll-control').click(Candy.View.Pane.Chat.Toolbar.onAutoscrollControlClick);
 
-			$('#chat-sound-control').click(Candy.View.Pane.Chat.Toolbar.onSoundControlClick);
-			if(Candy.Util.cookieExists('candy-nosound')) {
-				$('#chat-sound-control').click();
-			}
 			$('#chat-statusmessage-control').click(Candy.View.Pane.Chat.Toolbar.onStatusMessageControlClick);
 			if(Candy.Util.cookieExists('candy-nostatusmessages')) {
 				$('#chat-statusmessage-control').click();
@@ -133,8 +129,7 @@ Candy.View = (function(self, $) {
 			tabs: Candy.View.Template.Chat.tabs,
 			rooms: Candy.View.Template.Chat.rooms,
 			modal: Candy.View.Template.Chat.modal,
-			toolbar: Candy.View.Template.Chat.toolbar,
-			soundcontrol: Candy.View.Template.Chat.soundcontrol
+			toolbar: Candy.View.Template.Chat.toolbar
 		}));
 
 		// ... and let the elements dance.

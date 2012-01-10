@@ -382,44 +382,6 @@ Candy.View.Pane = (function(self, $) {
 				$('#chat-toolbar').hide();
 			},
 
-			/** Function: playSound
-			 * Play sound (default method).
-			 */
-			playSound: function() {
-				self.Chat.Toolbar.onPlaySound();
-			},
-
-			/** Function: onPlaySound
-			 * Sound play event handler.
-			 *
-			 * Don't call this method directly. Call `playSound()` instead.
-			 * `playSound()` will only call this method if sound is enabled.
-			 */
-			onPlaySound: function() {
-				var chatSoundPlayer = document.getElementById('chat-sound-player');
-				chatSoundPlayer.SetVariable('method:stop', '');
-				chatSoundPlayer.SetVariable('method:play', '');
-			},
-
-			/** Function: onSoundControlClick
-			 * Sound control click event handler.
-			 *
-			 * Toggle sound (overwrite `playSound()`) and handle cookies.
-			 */
-			onSoundControlClick: function() {
-				var control = $('#chat-sound-control');
-				if(control.hasClass('checked')) {
-					self.Chat.Toolbar.playSound = function() {};
-					Candy.Util.setCookie('candy-nosound', '1', 365);
-				} else {
-					self.Chat.Toolbar.playSound = function() {
-						self.Chat.Toolbar.onPlaySound();
-					};
-					Candy.Util.deleteCookie('candy-nosound');
-				}
-				control.toggleClass('checked');
-			},
-
 			/** Function: onAutoscrollControlClick
 			 * Autoscroll control event handler.
 			 *
@@ -1604,9 +1566,6 @@ Candy.View.Pane = (function(self, $) {
 			// Notify the user about a new private message
 			if(Candy.View.getCurrent().roomJid !== roomJid || !self.Window.hasFocus()) {
 				self.Chat.increaseUnreadMessages(roomJid);
-				if(Candy.View.Pane.Chat.rooms[roomJid].type === 'chat' && !self.Window.hasFocus()) {
-					self.Chat.Toolbar.playSound();
-				}
 			}
 			if(Candy.View.getCurrent().roomJid === roomJid) {
 				self.Room.scrollToBottom(roomJid);
