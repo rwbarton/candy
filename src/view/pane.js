@@ -1406,16 +1406,16 @@ Candy.View.Pane = (function(self, $) {
 						rosterPane.append(html);
 					}
 
-					self.Roster.joinAnimation('user-' + roomId + '-' + userId);
-					// only show other users joining & don't show if there's no message in the room.
-					if(currentUser !== undefined && user.getNick() !== currentUser.getNick() && self.Room.getUser(roomJid)) {
-						// always show join message in private room, even if status messages have been disabled
-						if (self.Chat.rooms[roomJid].type === 'chat') {
-							self.Chat.onInfoMessage(roomJid, $.i18n._('userJoinedRoom', [user.getNick()]));
-						} else {
-							self.Chat.infoMessage(roomJid, $.i18n._('userJoinedRoom', [user.getNick()]));
-						}
-					}
+				        self.Roster.joinAnimation('user-' + roomId + '-' + userId);
+					// // only show other users joining & don't show if there's no message in the room.
+					// if(currentUser !== undefined && user.getNick() !== currentUser.getNick() && self.Room.getUser(roomJid)) {
+					// 	// always show join message in private room, even if status messages have been disabled
+					// 	if (self.Chat.rooms[roomJid].type === 'chat') {
+					// 		self.Chat.onInfoMessage(roomJid, $.i18n._('userJoinedRoom', [user.getNick()]));
+					// 	} else {
+					// 		self.Chat.infoMessage(roomJid, $.i18n._('userJoinedRoom', [user.getNick()]));
+					// 	}
+				        // }
 				// user is in room but maybe the affiliation/role has changed
 				} else {
 					usercountDiff = 0;
@@ -1445,11 +1445,11 @@ Candy.View.Pane = (function(self, $) {
 			} else if(action === 'leave') {
 				self.Roster.leaveAnimation('user-' + roomId + '-' + userId);
 				// always show leave message in private room, even if status messages have been disabled
-				if (self.Chat.rooms[roomJid].type === 'chat') {
-					self.Chat.onInfoMessage(roomJid, $.i18n._('userLeftRoom', [user.getNick()]));
-				} else {
-					self.Chat.infoMessage(roomJid, $.i18n._('userLeftRoom', [user.getNick()]));
-				}
+				// if (self.Chat.rooms[roomJid].type === 'chat') {
+				// 	self.Chat.onInfoMessage(roomJid, $.i18n._('userLeftRoom', [user.getNick()]));
+				// } else {
+				// 	self.Chat.infoMessage(roomJid, $.i18n._('userLeftRoom', [user.getNick()]));
+				// }
 			// user has been kicked
 			} else if(action === 'kick') {
 				self.Roster.leaveAnimation('user-' + roomId + '-' + userId);
