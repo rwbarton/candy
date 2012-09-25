@@ -957,7 +957,7 @@ Candy.View.Pane = (function(self, $) {
 			roomType = roomType || 'groupchat';
 			// First room, show sound control
 			if(Candy.Util.isEmptyObject(self.Chat.rooms)) {
-				self.Chat.Toolbar.show();
+				//self.Chat.Toolbar.show();
 			}
 
 			var roomId = Candy.Util.jidToId(roomJid);
